@@ -2,12 +2,12 @@
 
 ### 方便构建一个设置界面，只需要设置一下数据源，不需要继承。
 
-![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSSettingDataSource/Image/demo.png)
+![效果图](https://github.com/helloAda/DSSettingDataSource/blob/master/DSSettingDataSource/Image/demo.png)
 
 
 ### 使用如下:
 
-######  #import "DSSettingDataSource.h"
+######  `#import "DSSettingDataSource.h"`
 
 ```
 //如果 tableView.style 为group 
@@ -38,10 +38,10 @@ items.headTitle = @"人力资源部";
 items.footTitle = @"为您提供便利服务";
 [_array addObject:items];
 
-DSSettingDataSource *dataSource = [[DSSettingDataSource alloc] initWithItems:_array];
+_dataSource = [[DSSettingDataSource alloc] initWithItems:_array];
 
-self.tableView.dataSource = dataSource;
-self.tableView.delegate = dataSource;
+self.tableView.dataSource = _dataSource;
+self.tableView.delegate = _dataSource;
 
 ```
 
@@ -66,10 +66,10 @@ self.tableView.delegate = dataSource;
     [_array addObject:item];
 
 }
-DSSettingDataSource *dataSource = [[DSSettingDataSource alloc] initWithItems:_array];
+_dataSourcedataSource = [[DSSettingDataSource alloc] initWithItems:_array];
 
-self.tableView.dataSource = dataSource;
-self.tableView.delegate = dataSource;
+self.tableView.dataSource = _dataSource;
+self.tableView.delegate = _dataSource;
 ```
 
 #### 有使用问题可以 [issues](https://github.com/helloAda/DSSettingDataSource/issues)
