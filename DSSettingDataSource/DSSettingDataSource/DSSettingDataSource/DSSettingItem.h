@@ -54,10 +54,10 @@ typedef void(^DidSelectBlock)(void);
  @param type 类型
  @return 实例
  */
-+ (instancetype)initWithTitle:(NSString *)title icon:(NSString *)icon detial:(NSString *)detial type:(DSSettingItemType)type;
++ (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon detial:(NSString *)detial type:(DSSettingItemType)type;
 
 //初始化方法
-+ (instancetype)initWithTitle:(NSString *)title icon:(NSString *)icon type:(DSSettingItemType)type;
++ (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon type:(DSSettingItemType)type;
 
 @end
 

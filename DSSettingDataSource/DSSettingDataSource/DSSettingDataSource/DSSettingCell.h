@@ -11,7 +11,6 @@
 
 @interface DSSettingCell : UITableViewCell
 
-//配置Cell
-- (void)configCell:(id)item;
+@property (nonatomic, strong) DSSettingItem *item;
 
 @end

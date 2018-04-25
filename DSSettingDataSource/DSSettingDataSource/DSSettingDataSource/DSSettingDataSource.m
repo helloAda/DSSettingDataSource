@@ -7,8 +7,6 @@
 //
 
 #import "DSSettingDataSource.h"
-#import "DSSettingCell.h"
-
 @interface DSSettingDataSource ()
 
 @property (nonatomic, strong) NSArray *items;
@@ -63,17 +61,35 @@ static NSString *identifier = @"settingCellID";
     id item = [self itemAtIndexPath:indexPath tableView:tableView];
     DSSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[DSSettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[DSSettingCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
-    [cell configCell:item];
+    [cell setItem:item];
     return cell;
 }
 
 #pragma mark --- UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DSSettingItem *item = [self itemAtIndexPath:indexPath tableView:tableView];
+    if (item.didSelectBlock) {
+        item.didSelectBlock();
+    }
 }
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (tableView.style == UITableViewStyleGrouped) {
+        DSSettingItems *items = self.items[section];
+        return items.headTitle;
+    }
+    return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (tableView.style == UITableViewStyleGrouped) {
+        DSSettingItems *items = self.items[section];
+        return items.footTitle;
+    }
+    return nil;
+}
 @end
