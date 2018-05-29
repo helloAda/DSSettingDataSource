@@ -24,7 +24,7 @@
 }
 @end
 
-@implementation DSSettingItems
+@implementation DSSettingGroup
 
 - (instancetype)init
 {
