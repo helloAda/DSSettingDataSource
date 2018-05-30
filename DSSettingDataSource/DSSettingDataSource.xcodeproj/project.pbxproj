@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E41A31D20BE4F3E00D7F171 /* DSSettingCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSSettingCellProtocol.h; sourceTree = "<group>"; };
 		0EF0CAED208F541100F161FF /* DSSettingDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSSettingDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF0CAF0208F541100F161FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0EF0CAF1208F541100F161FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 				0EF0CB27208F546C00F161FF /* DSSettingCell.m */,
 				0EF0CB29208F548D00F161FF /* DSSettingDataSource.h */,
 				0EF0CB2A208F548D00F161FF /* DSSettingDataSource.m */,
+				0E41A31D20BE4F3E00D7F171 /* DSSettingCellProtocol.h */,
 			);
 			path = DSSettingDataSource;
 			sourceTree = "<group>";

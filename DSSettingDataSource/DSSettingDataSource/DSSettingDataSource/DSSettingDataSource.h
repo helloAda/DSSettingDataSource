@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DSSettingCell.h"
-
+#import "DSSettingCellProtocol.h"
 @interface DSSettingDataSource : NSObject<UITableViewDelegate, UITableViewDataSource>
 
 //初始化

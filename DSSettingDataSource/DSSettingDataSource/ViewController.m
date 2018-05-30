@@ -30,99 +30,101 @@
 }
 
 - (void)setData {
-    
-    DSSettingItems *items = [[DSSettingItems alloc] init];
-    
     {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"打卡补签" icon:@"打卡补签" type:DSSettingItemTypeSwitch];
-        item.isSwitchOn = YES;
-        item.didSelectBlock = ^{
-            NSLog(@"点击打卡补签");
-        };
-        item.switchClick = ^(BOOL on) {
-            NSLog(@"switch %d",on);
-        };
-        [items.items addObject:item];
+        DSSettingGroup *group = [[DSSettingGroup alloc] init];
         
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeSwitch title:@"打卡补签" icon:@"打卡补签"];
+            item.didSelectBlock = ^{
+                NSLog(@"打卡补签");
+            };
+            item.isSwitchOn = YES;
+            item.switchClick = ^(BOOL on) {
+                NSLog(@"switch %d",on);
+            };
+            [group.items addObject:item];
+            
+        }
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"休假申请" icon:@"休假申请"];
+            item.details = @"请假、调休";
+            item.didSelectBlock = ^{
+                NSLog(@"休假申请");
+            };
+            [group.items addObject:item];
+            
+        }
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeNone title:@"人事申请" icon:@"人事申请"];
+            item.didSelectBlock = ^{
+                NSLog(@"人事申请");
+            };
+            [group.items addObject:item];
+            
+        }
+        group.headTitle = @"人力资源部";
+        group.footTitle = @"为您提供便利服务";
+        [_array addObject:group];
     }
-    {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"休假申请" icon:@"休假申请" detial:@"请假、调休" type:DSSettingItemTypeDetial];
-        item.didSelectBlock = ^{
-            NSLog(@"点击休假申请");
-        };
-        [items.items addObject:item];
-
-    }
-    {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"人事申请" icon:@"人事申请" type:DSSettingItemTypeArrow];
-        item.didSelectBlock = ^{
-            NSLog(@"人事申请");
-        };
-        [items.items addObject:item];
-
-    }
-    items.headTitle = @"人力资源部";
-    items.footTitle = @"为您提供便利服务";
-    [_array addObject:items];
     
-    
-    
-    DSSettingItems *items1 = [[DSSettingItems alloc] init];
-
     {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"付款申请" icon:@"付款申请" type:DSSettingItemTypeArrow];
-        item.didSelectBlock = ^{
-            NSLog(@"点击付款申请");
-        };
-        [items1.items addObject:item];
+        DSSettingGroup *group = [[DSSettingGroup alloc] init];
         
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeNone title:@"付款申请" icon:@"付款申请"];
+            item.didSelectBlock = ^{
+                NSLog(@"付款申请");
+            };
+            [group.items addObject:item];
+            
+        }
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeNone title:@"交通报销" icon:@"交通报销"];
+            
+            item.didSelectBlock = ^{
+                NSLog(@"交通报销");
+            };
+            [group.items addObject:item];
+            
+        }
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeDetial title:@"借款申请" icon:@"借款申请"];
+            item.details = @"额度50000元";
+            item.isForbidSelect = YES; //禁止点击
+            item.didSelectBlock = ^{
+                NSLog(@"借款申请");
+            };
+            [group.items addObject:item];
+            
+        }
+        group.headTitle = @"财务部";
+        group.footTitle = @"为您提供便利服务";
+        [_array addObject:group];
     }
+    
     {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"交通报销" icon:@"交通报销" type:DSSettingItemTypeArrow];
-        item.didSelectBlock = ^{
-            NSLog(@"点击交通报销");
-        };
-        [items1.items addObject:item];
+        DSSettingGroup *group = [[DSSettingGroup alloc] init];
+        {
+            DSSettingItem *item = [DSSettingItem itemWithtype:DSSettingItemTypeNone title:@"电脑故障" icon:@"电脑故障"];
+            item.cellActionName = @"computerFailure";
+            item.rowHeight = 60;
+            [group.items addObject:item];
+        }
         
+        group.headTitle = @"技术支持";
+        [_array addObject:group];
     }
-    {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"借款申请" icon:@"借款申请" detial:@"额度50000元" type:DSSettingItemTypeDetial];
-        item.didSelectBlock = ^{
-            NSLog(@"点击借款申请");
-        };
-        [items1.items addObject:item];
-        
-    }
-    items1.headTitle = @"财务部";
-    items1.footTitle = @"为您提供便利服务";
-    [_array addObject:items1];
-    
-    
-
-    DSSettingItems *items2 = [[DSSettingItems alloc] init];
-    {
-        DSSettingItem *item = [DSSettingItem itemWithTitle:@"电脑故障" icon:@"电脑故障" type:DSSettingItemTypeArrow];
-        item.didSelectBlock = ^{
-            NSLog(@"点击电脑故障");
-        };
-        [items2.items addObject:item];
-    }
-
-    items2.headTitle = @"技术支持";
-    [_array addObject:items2];
-    
     self.dataSource = [[DSSettingDataSource alloc] initWithItems:_array];
-    //
-
+    
+    
 }
 
 - (void)setupUI {
     
-
-    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
     UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
@@ -131,6 +133,14 @@
     headView.font = [UIFont boldSystemFontOfSize:30.0f];
     headView.textAlignment = NSTextAlignmentCenter;
     self.tableView.tableHeaderView = headView;
+    
+}
+
+#pragma mark -- Cell Action --
+
+//电脑故障点击
+- (void)computerFailure {
+    NSLog(@"电脑故障");
 }
 
 @end

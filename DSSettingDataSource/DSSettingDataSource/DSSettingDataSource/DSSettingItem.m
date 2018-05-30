@@ -10,17 +10,34 @@
 
 @implementation DSSettingItem
 
-+ (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon type:(DSSettingItemType)type {
-    return [self itemWithTitle:title icon:icon detial:@"" type:type];
-}
-
-+ (instancetype)itemWithTitle:(NSString *)title icon:(NSString *)icon detial:(NSString *)detial type:(DSSettingItemType)type {
++ (instancetype)itemWithtype:(DSSettingItemType)type title:(NSString *)title icon:(NSString *)icon {
     DSSettingItem *item = [[DSSettingItem alloc] init];
+    item.type = type;
     item.title = title;
     item.icon = icon;
-    item.type = type;
-    item.details = detial;
+
     return item;
+}
+
+
++ (instancetype)itemWithtype:(DSSettingItemType)type cellClassName:(NSString *)cellClassName {
+    DSSettingItem *item = [[DSSettingItem alloc] init];
+    item.type = type;
+    item.cellClassName = cellClassName;
+    return item;
+}
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.isShowAccessory = YES;
+        self.sepLeftEdge = 15;
+        self.rowHeight = 44;
+        self.isForbidSelect = NO;
+    }
+    return self;
 }
 @end
 
